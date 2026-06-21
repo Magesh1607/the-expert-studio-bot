@@ -44,7 +44,7 @@ async def on_member_join(member):
         draw = ImageDraw.Draw(img)
 
         try:
-            font = ImageFont.truetype("arial.ttf", 55)
+            font = ImageFont.truetype("DejaVuSans-Bold.ttf",55)
         except:
             font = ImageFont.load_default()
 
