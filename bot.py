@@ -12,7 +12,7 @@ def run():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
 
-Thread(target=run).start()
+Thread(target=run, daemon=True).start()
 
 import discord
 from discord.ext import commands
@@ -90,6 +90,19 @@ async def on_member_join(member):
 
     except Exception as e:
         print("ERROR:", e)
+@bot.event
+async def on_disconnect():
+    print("BOT DISCONNECTED")
 
+@bot.event
+async def on_resumed():
+    print("BOT RECONNECTED")
 
-bot.run(TOKEN)
+@bot.event
+async def on_error(event, *args, **kwargs):
+    print(f"ERROR IN EVENT: {event}")
+
+try:
+    bot.run(TOKEN)
+except Exception as e:
+    print("FATAL ERROR:", e)
