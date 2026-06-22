@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from threading import Thread
 
@@ -13,7 +14,6 @@ def run():
 
 Thread(target=run).start()
 
-import os
 import discord
 from discord.ext import commands
 import requests
